@@ -1,0 +1,87 @@
+.colors-css {
+    color: red;
+    background-color: blue;
+    border-color: green;
+}
+
+.opacity-css {
+    /*прозрачность от 0 до 1; 1=полностью прозрачный*/
+    opacity: 0.2;
+}
+
+.font-css {
+    /*шрифты*/
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    /*ширина от 100 до 900 с шагом в 100; 900 - самый толстый*/
+    font-weight: 100;
+    /*курсив - italic; обычный - normal*/
+    font-style: italic;
+    /*размер текста*/
+    font-size: 18px;
+    /*между букв расстояние; + или -*/
+    letter-spacing: -1px;
+    /*между слов расстояние; + или -*/
+    word-spacing: 1px;
+    /*4 значение - горизонтальное смещение, вертикальное смещение, размытость и цвет */
+    text-shadow: 5px 4px 3px #999;
+}
+
+.table-style-css {
+    /*Граница таблицы
+    table{border} - граница всей
+    tr{border} - граница между строк
+    td, th{border} - граница между столбцами*/
+    border: 1px solid #ccc;
+    /*Стиль границы между ячейками*/
+    border-collapse: collapse;
+    /*промежутки между границами смежных ячеек*/
+    border-spacing: 3px;
+    /*положение элемента caption*/
+    caption-side: top;
+    /*режим отрисовки пустых ячеек*/
+    empty-cells: hide;
+    /*размер таблицы*/
+    table-layout: fixed;
+    /*вертикальное выравнивание*/
+    vertical-align: bottom;
+}
+
+.container-css {
+    /*расстояние между внешними границами, можно все 4 определить top, right, bottom, left*/
+    margin: 3px;
+    /*граница элемента, есть ещё width, style, color*/
+    border: 3px;
+    /*внутренний отступ, отступы как в margin*/
+    padding: 3px;
+    /*внутреннее содержание; текст, картинка, или другой блок*/
+}
+
+.elem-size-css {
+    width: 100px;
+    height: 100px;
+}
+
+.background-css {
+    background-color: aliceblue;
+    background-image: none;
+    background-repeat: no-repeat;
+}
+
+.flexbox-css {
+    /*база контейнера или inline-flex - строки*/
+    display: flex;
+    /*выравнивание по основной оси*/
+    justify-content: center;
+    /*выравнивание по поперечной оси*/
+    align-items: center;
+    /*может переопределить align-items для элемента*/
+    align-self: flex-start;
+    /*выравнивание контента внутри контейнера*/
+    align-content: center;
+    /*начальный размер контейнера*/
+    flex-basis: 200px;
+    /*как будет уменьшаться элемент*/
+    flex-shrink: 1;
+    /*как будет увеличиваться*/
+    flex-grow: 0;
+}

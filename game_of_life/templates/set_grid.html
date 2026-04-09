@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block style %}
+<link href="{{ url_for('static', filename='main.css') }}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block content %}
+<div class="body-main">
+    <div class="btn-container-top">
+        <a href="{{ url_for('root') }}" class="btn-main-click">Главная</a>
+    </div>
+
+    <div class="btn-container">
+        <form action="{{ url_for('set_size') }}" method="POST" class="inline-form">
+            <input type="hidden" name="rows" value="10">
+            <input type="hidden" name="cols" value="10">
+            <button type="submit" class="btn-main-click">
+                Симуляция (10*10)
+            </button>
+        </form>
+
+        <form action="{{ url_for('set_size') }}" method="POST" class="inline-form">
+            <input type="hidden" name="rows" value="20">
+            <input type="hidden" name="cols" value="20">
+            <button type="submit" class="btn-main-click">
+                Симуляция (20*20)
+            </button>
+        </form>
+
+        <form action="{{ url_for('set_size') }}" method="POST" class="inline-form">
+            <input type="hidden" name="rows" value="30">
+            <input type="hidden" name="cols" value="30">
+            <button type="submit" class="btn-main-click">
+                Симуляция (30*30)
+            </button>
+        </form>
+    </div>
+    <div class="custom-settings">
+        <h3 style="color: gainsboro;">Свой размер поля</h3>
+        <form action="{{ url_for('set_size') }}" method="POST" class="user-form">
+            <div class="input-group">
+                <label for="rows">Ряды:</label>
+                <input type="number" id="rows" name="rows" value="20" min="5" max="100">
+            </div>
+
+            <div class="input-group">
+                <label for="cols">Столбцы:</label>
+                <input type="number" id="cols" name="cols" value="20" min="5" max="100">
+            </div>
+
+            <button type="submit" class="btn-main-click">Создать поле</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block style %}
+<link href="{{ url_for('static', filename='main.css') }}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block content %}
+<div class="body-main">
+    <div class="btn-container-top">
+        <a href="{{ url_for('root') }}" class="btn-main-click">Главная</a>
+    </div>
+
+    <div class="btn-container">
+        <form action="{{ url_for('game_dificulty') }}" method="POST" class="inline-form">
+            <input type="hidden" name="rows" value="5">
+            <input type="hidden" name="cols" value="5">
+            <button type="submit" class="btn-main-click">
+                Легкий (5*5)
+            </button>
+        </form>
+
+        <form action="{{ url_for('game_dificulty') }}" method="POST" class="inline-form">
+            <input type="hidden" name="rows" value="10">
+            <input type="hidden" name="cols" value="10">
+            <button type="submit" class="btn-main-click">
+                Средний (10*10)
+            </button>
+        </form>
+
+        <form action="{{ url_for('game_dificulty') }}" method="POST" class="inline-form">
+            <input type="hidden" name="rows" value="15">
+            <input type="hidden" name="cols" value="15">
+            <button type="submit" class="btn-main-click">
+                Сложный (15*15)
+            </button>
+        </form>
+    </div>
+</div>
+{% endblock %}

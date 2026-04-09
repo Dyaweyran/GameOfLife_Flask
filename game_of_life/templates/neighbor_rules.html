@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+
+{% block style %}
+<link href="{{ url_for('static', filename='rules.css') }}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block content %}
+<div class="wrapper">
+    <div class="btn-container">
+        <a href="{{ url_for('root') }}" class="btn-main">Главная</a>
+    </div>
+
+    <div class="grid-container-2">
+        <div class="flex-item-img">
+            <img src="{{ url_for('static', filename='images/neighbor_1.png')}}" alt="Картинка">
+        </div>
+        <div class="flex-item">
+            <p>Это блок про соседтсво и как его интерпретировать. Слева вы будете лицезреть условный ход 1,
+                а справа следующий за ним - условный ход 2.
+                Ну или было ====> стало<br>
+
+                Нам интересны лишь 8 клеток вокруг центральной, ну или чуть поменьше у боковых и угловых. С кем у
+                исследуемой ячейки есть контакт либо <b>стороной</b>, либо углом - <b>по диагонали</b>.<br>
+
+                Здесь у нас <i>нет соседей вовсе</i>, а значит клетке суждено умереть. Что мы и видим на правой
+                картинке.
+                Надеюсь, все понятно объяснил
+            </p>
+        </div>
+        <div class="flex-item-img">
+            <img src="{{ url_for('static', filename='images/neighbor_1_1.png')}}" alt="Картинка">
+        </div>
+    </div>
+
+    <div class="grid-container-2">
+        <div class="flex-item-img">
+            <img src="{{ url_for('static', filename='images/neighbor_2.png')}}" alt="Картинка">
+        </div>
+        <div class="flex-item">
+            <p>Ситуация номер 2. Теперь сосед есть, правда он один - и этого недостаточно для выживания.
+                Данная клетка тоже погибнет в следующем ходу
+            </p>
+        </div>
+        <div class="flex-item-img">
+            <img src="{{ url_for('static', filename='images/neighbor_2_2.png')}}" alt="Картинка">
+        </div>
+    </div>
+
+    <div class="grid-container-2">
+        <div class="flex-item-img">
+            <img src="{{ url_for('static', filename='images/neighbor_3.png')}}" alt="Картинка">
+        </div>
+        <div class="flex-item">
+            <p>Ситуация 3 - количество соседей растет. Вот теперь мы пришли к нужному и приятному результату
+                соседей для выживания достаточно. Эта клетка выживает в следующем ходу
+            </p>
+        </div>
+        <div class="flex-item-img">
+            <img src="{{ url_for('static', filename='images/neighbor_3_3.png')}}" alt="Картинка">
+        </div>
+    </div>
+
+    <div class="grid-container-2">
+        <div class="flex-item-img">
+            <img src="{{ url_for('static', filename='images/neighbor_4.png')}}" alt="Картинка">
+        </div>
+        <div class="flex-item">
+            <p>Как и эта клетка. Трое соседей не помеха для жизни. Кстати не забудьте, что оптимальное
+                количество соседей 2-3 не только поддерживают жизнь в уже живых клетках, но и зарождает
+                новую в пустующих - белых клетках или возрождают в недавно погибших - красных
+            </p>
+        </div>
+        <div class="flex-item-img">
+            <img src="{{ url_for('static', filename='images/neighbor_4_4.png')}}" alt="Картинка">
+        </div>
+    </div>
+
+    <div class="grid-container-2">
+        <div class="flex-item-img">
+            <img src="{{ url_for('static', filename='images/neighbor_5.png')}}" alt="Картинка">
+        </div>
+        <div class="flex-item">
+            <p>А здесь все уже печально, соседей слишком много для жизни. Если клетка была живой, как в нашем
+                примере - то она погибнет. А если была пустующей - то жизнь не появится
+            </p>
+        </div>
+        <div class="flex-item-img">
+            <img src="{{ url_for('static', filename='images/neighbor_5_5.png')}}" alt="Картинка">
+        </div>
+    </div>
+
+    <div class="grid-container-2">
+        <div class="flex-item-img">
+            <img src="{{ url_for('static', filename='images/neighbor_6.png')}}" alt="Картинка">
+        </div>
+        <div class="flex-item">
+            <p>Как и здесь. Пятеро соседей слишком много для жизни. Печальная судьба постигает эту ячейку</p>
+        </div>
+        <div class="flex-item-img">
+            <img src="{{ url_for('static', filename='images/neighbor_6_6.png')}}" alt="Картинка">
+        </div>
+    </div>
+
+    <div class="grid-container-2">
+        <div class="flex-item-img">
+            <img src="{{ url_for('static', filename='images/neighbor_7.png')}}" alt="Картинка">
+        </div>
+        <div class="flex-item">
+            <p>И эту</p>
+        </div>
+        <div class="flex-item-img">
+            <img src="{{ url_for('static', filename='images/neighbor_7_7.png')}}" alt="Картинка">
+        </div>
+    </div>
+
+    <div class="grid-container-2">
+        <div class="flex-item-img">
+            <img src="{{ url_for('static', filename='images/neighbor_8.png')}}" alt="Картинка">
+        </div>
+        <div class="flex-item">
+            <p>И эту тоже.
+                Кстати тут мог бы быть пример с 8 соседями, но это лучше увидеть своими глазами по ссылке
+                <b>Игра</b> на главной странице
+            </p>
+        </div>
+        <div class="flex-item-img">
+            <img src="{{ url_for('static', filename='images/neighbor_8_8.png')}}" alt="Картинка">
+        </div>
+    </div>
+</div>
+{% endblock %}

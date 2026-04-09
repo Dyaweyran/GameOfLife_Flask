@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% block style %}
+<link href="{{ url_for('static', filename='main.css') }}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block content %}
+<div class="body-game">
+    <div class="btn-container-top">
+        <form action="{{ url_for('check_condition') }}" id="game-form" method="POST" class="inline-form">
+            <input type="hidden" name="matrix-data" id="matrix-data">
+            <button type="submit" class="btn-main-click">Проверить</button>
+        </form>
+        <div class="btn-counter">
+            <span>Ходов: <b id="move-count">{{ counter }}</b></span>
+        </div>
+        <div class="btn-counter">
+            <span>Ошибок: <b id="error-count" style="display: flex; color: red; justify-content: center;">{{ mistakes
+                    }}</b></span>
+        </div>
+    </div>
+
+    <div class="grid-container-middle">
+        <div class="grid-container-inside"
+            style="--rows: {{ grid_size | length }}; --cols: {{ grid_size[0] | length }}">
+            {% for i in range(grid_size | length) %}
+            {% for j in range(grid_size[0] | length) %}
+            {% if grid_size[i][j] == 0 %}
+            <div class="grid-item" data-state="0">
+                <div class="dot"></div>
+            </div>
+            {% elif grid_size[i][j] == 1 %}
+            <div class="grid-item" data-state="1">
+                <div class="dot"></div>
+            </div>
+            {% else %}
+            <div class="grid-item" data-state="2">
+                <div class="dot"></div>
+            </div>
+            {% endif %}
+            {% endfor %}
+            {% endfor %}
+        </div>
+    </div>
+    <div class="btn-container-bottom">
+        <a href="{{ url_for('root') }}" class="btn-main-click">Главная</a>
+        <a href="{{ url_for('game') }}" class="btn-main-click">Сброс</a>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    const container = document.querySelector('.grid-container-inside');
+
+    // 1. Логика выбора (клик по точке)
+    container.addEventListener('click', (e) => {
+        // Проверяем, что кликнули именно по точке (dot)
+        if (e.target.classList.contains('dot')) {
+            const dot = e.target;
+
+            // Toggle состояния: если '1' (выбрано), ставим '0', и наоборот.
+            // В JS dataset всегда возвращает строки, так что работаем со строками.
+            dot.dataset.active = dot.dataset.active === "1" ? "0" : "1";
+
+            console.log("Точка изменена. Текущий статус выбора:", dot.dataset.active);
+        }
+    });
+
+    // 2. Сбор данных перед отправкой
+    document.getElementById('game-form').onsubmit = function (e) {
+        e.preventDefault();
+
+        // Ищем все точки внутри контейнера
+        const dots = document.querySelectorAll('.grid-container-inside .dot');
+
+        // Мапим их состояния в массив чисел (как в твоем старом коде)
+        const data = Array.from(dots).map(dot =>
+            parseInt(dot.dataset.active || "0")
+        );
+
+        console.log("Данные для отправки на Python:", data);
+
+        // Кладём в скрытый инпут и отправляем
+        document.getElementById('matrix-data').value = JSON.stringify(data);
+        this.submit();
+    };
+</script>
+{% endblock %}

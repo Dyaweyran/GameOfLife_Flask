@@ -1,0 +1,266 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+head,
+body,
+h1,
+h2,
+p {
+    padding: 0;
+    margin: 0;
+    font-family: verdana, arial, sans-serif;
+}
+
+.body-main {
+    color: #F8FAFC;
+    font-size: 1.1em;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.body-game {
+    color: #ffffff;
+    font-size: 1.1em;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn-container {
+    border: 2px solid white;
+    display: flex;
+    flex-direction: column;
+    background-color: whitesmoke;
+    width: 200px;
+    height: 300px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+}
+
+.btn-container-top {
+    border: 2px solid white;
+    display: flex;
+    flex-direction: row;
+    background-color: whitesmoke;
+    width: auto;
+    min-height: 9vh;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+}
+
+.grid-container-middle {
+    border: 1px solid rgb(255, 255, 255);
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    min-width: 80vh;
+    min-height: 80vh;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.grid-container-inside {
+    display: grid;
+    /* Переменные со значениями по умолчанию */
+    --cols: 20;
+    --rows: 20;
+
+    /* Создаем сетку: repeat(количество, размер) */
+    grid-template-columns: repeat(var(--cols), 1fr);
+    grid-template-rows: repeat(var(--rows), 1fr);
+
+    /* Чтобы поле было квадратным и не расплывалось */
+    aspect-ratio: var(--cols) / var(--rows);
+    width: 100%;
+    max-width: 600px;
+    /* Ограничьте размер на экране */
+
+    gap: 1px;
+    /* Вот ваша граница между ячейками */
+    background-color: #ccc;
+    /* Цвет границ (просвечивает сквозь gap) */
+    border: 1px solid #000000;
+}
+
+
+.grid-item {
+    display: flex;
+    aspect-ratio: 1 / 1;
+    height: auto;
+    width: auto;
+    border: #000;
+    justify-content: center;
+    align-items: center;
+}
+
+.grid-item[data-state='0'] {
+    background-color: white;
+}
+
+.grid-item[data-state='1'] {
+    background-color: #10B981;
+}
+
+.grid-item[data-state='2'] {
+    background-color: red;
+}
+
+.btn-container-bottom {
+    border: 2px solid blueviolet;
+    display: flex;
+    flex-direction: row;
+    background-color: whitesmoke;
+    width: 500px;
+    min-height: 9vh;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+}
+
+.btn-main-click {
+    display: flex;
+    border: 2px solid white;
+    margin: 7px;
+    background-color: gainsboro;
+    text-decoration: none;
+    color: white;
+    width: 180px;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    font-family: sans-serif;
+    transition: 0.3s;
+}
+
+.btn-main-click:hover {
+    background-color: #4F46E5;
+    cursor: pointer;
+}
+
+.btn-counter {
+    display: flex;
+    background-color: #ccc;
+    width: 100px;
+    height: 50px;
+    color: #ffffff;
+    font-size: medium;
+    align-items: center;
+    justify-content: center;
+    border-radius: 25%;
+}
+
+form.inline-form {
+    display: inline;
+    margin: 0;
+    padding: 0;
+}
+
+form.inline-form button.btn-main-click {
+    border: none;
+    padding: 0;
+    font: inherit;
+    font-size: small;
+    color: inherit;
+    cursor: pointer;
+    outline: none;
+}
+
+.custom-settings {
+    margin-top: 30px;
+    padding: 20px;
+    border-top: 1px solid #ccc;
+    /* Отделим от кнопок-пресетов */
+}
+
+.user-form {
+    display: flex;
+    gap: 15px;
+    /* Расстояние между элементами */
+    align-items: flex-end;
+    /* Выравнивание по низу, чтобы кнопка и инпуты были в ряд */
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.input-group label {
+    font-size: 0.9em;
+    color: #666;
+}
+
+.input-group input {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 60px;
+    /* Узкие поля для чисел */
+}
+
+.counter-info {
+    display: flex;
+    background-color: #ccc;
+    width: 100px;
+    height: 50px;
+    color: #ffffff;
+    font-size: medium;
+    align-items: center;
+    justify-content: center;
+    border-radius: 25%;
+    flex-direction: column;
+}
+
+.user-choice {
+    width: 70%;
+    height: 70%;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+    border: 2px solid white;
+}
+
+.dot {
+    width: 40%;
+    height: 40%;
+    z-index: 10;
+    border: 1px solid #000;
+    pointer-events: auto;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.2);
+    /* Полупрозрачная по умолчанию */
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.dot:hover {
+    transform: scale(1.5);
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.dot[data-active="0"] {
+    background-color: rgba(255, 68, 0, 0.812);
+    /* Цвет выбранной точки */
+    transform: scale(1.2);
+}
+
+.dot[data-active="1"] {
+    background-color: #27ae60;
+    /* Цвет выбранной точки */
+    transform: scale(1.2);
+}

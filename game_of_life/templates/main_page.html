@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block style %}
+<link href="{{ url_for('static', filename='main.css') }}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block content %}
+<div class="body-main">
+    <div class="btn-container">
+        <a href="{{ url_for('choose_grid_size') }}" class="btn-main-click">Симуляция</a>
+        <a href="{{ url_for('rules') }}" class="btn-main-click">Правила</a>
+        <a href="{{ url_for('choose_game_dificulty') }}" class="btn-main-click">Игра</a>
+        <a href="{{ url_for('something') }}" class="btn-main-click">Другое</a>
+    </div>
+</div>
+{% endblock %}

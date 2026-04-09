@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+
+{% block style %}
+<link href="{{ url_for('static', filename='rules.css') }}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block content %}
+<div class="wrapper">
+    <div class="btn-container">
+        <a href="{{ url_for('root') }}" class="btn-main">Главная</a>
+    </div>
+    <div class="grid-container">
+        <div class="rule-card">
+            <img src="{{ url_for('static', filename='images/choose_1.png')}}" alt="Картинка">
+        </div>
+        <div class="flex-item">
+            <p>Поле выглядит примерно так, только чуть <b>побольше</b>.</p>
+        </div>
+    </div>
+    <div class="grid-container">
+        <div class="rule-card">
+            <img src="{{ url_for('static', filename='images/choose_6.png')}}" alt="Картинка">
+        </div>
+        <div class="flex-item" id="text-list">
+            <p>Ячейки могут быть
+            <ul>
+                <li><i>Белые</i> - мертвые клетки</li>
+                <li><em>Зеленые</em> - живые клетки</li>
+                <li><i>Красные</i> - мертвые клетки (но в прошлом ходу были живыми)</li>
+            </ul>
+            </p>
+        </div>
+    </div>
+    <div class="grid-container">
+        <div class="rule-card">
+            <img src="{{ url_for('static', filename='images/choose_2.png')}}" alt="Картинка">
+        </div>
+        <div class="flex-item">
+            <p>Как вы можете видеть, внутри ячеек есть <b>точка</b>.
+                При наведении внутренняя точка изменяется - это показатель, что <b><u>по ней можно нажать</u></b></p>
+        </div>
+    </div>
+    <div class="grid-container">
+        <div class="rule-card">
+            <img src="{{ url_for('static', filename='images/choose_3.png')}}" alt="Картинка">
+        </div>
+        <div class="flex-item">
+            <p>Нажатие изменяет цвет. Сначала на <u>зеленый</u></p>
+        </div>
+    </div>
+    <div class="grid-container">
+        <div class="rule-card">
+            <img src="{{ url_for('static', filename='images/choose_4.png')}}" alt="Картинка">
+        </div>
+        <div class="flex-item">
+            <p>Затем на <u>красный</u>. И так по кругу</p>
+        </div>
+    </div>
+    <div class="grid-container">
+        <div class="rule-card">
+            <img src="{{ url_for('static', filename='images/choose_7.png')}}" alt="Картинка">
+        </div>
+        <div class="flex-item">
+            <p>Перед завершением хода не забудьте отметить <b>каждую ячейку</b> цветом.
+                Вот тут мы забыли про <i>центральную красную</i></p>
+        </div>
+    </div>
+    <div class="grid-container">
+        <div class="rule-card">
+            <img src="{{ url_for('static', filename='images/choose_8.png')}}" alt="Картинка">
+        </div>
+        <div class="flex-item">
+            <p>Если вы совсем запутались и хотите начать с начала - нажмите кнопку <b>Сброс</b> внизу.
+                Она станет красной, когда вы на неё наведетесь</p>
+        </div>
+    </div>
+    <div class="grid-container">
+        <div class="rule-card">
+            <img src="{{ url_for('static', filename='images/choose_9.png')}}" alt="Картинка">
+        </div>
+        <div class="flex-item">
+            <p>После сброса все внутренние кружки снова вернут свой серый оттенок.
+                Чтобы вы со спокойной душой могли начать все с начала</p>
+        </div>
+    </div>
+    <div class="grid-container">
+        <div class="rule-card">
+            <img src="{{ url_for('static', filename='images/choose_5.png')}}" alt="Картинка">
+        </div>
+        <div class="flex-item">
+            <p>Чтобы завершить ход нажмите <b>Проверить</b>.
+                Она становится красной, когда вы на нее наводите</p>
+        </div>
+    </div>
+    <div class="grid-container">
+        <div class="rule-card">
+            <img src="{{ url_for('static', filename='images/choose_6.png')}}" alt="Картинка">
+        </div>
+        <div class="flex-item">
+            <p>После завершения хода произойдет проверка. Ячейки поменяют свой цвет на
+                следующий
+                в строгом соответствии с <a href="{{ url_for('neighbor_rules') }}">правилом соседей</a>. И вы снова
+                можете угадывать их цвет</p>
+        </div>
+    </div>
+    <div class="grid-container">
+        <div class="rule-card">
+            <img src="{{ url_for('static', filename='images/counter.png')}}" alt="Картинка">
+        </div>
+        <div class="flex-item">
+            <p>Не волнуйтесь, вы можете полностью сконцентрироваться на игре, ведь весь подсчет мы
+                берём на себя</p>
+        </div>
+    </div>
+    <div class="grid-container">
+        <div class="rule-card">
+            <img src="{{ url_for('static', filename='images/counter_1.png')}}" alt="Картинка">
+        </div>
+        <div class="flex-item">
+            <p>А если вы вдруг ошибётесь - мы это <u>заметим</u> и <i>запишем</i></p>
+        </div>
+    </div>
+
+    <div class="grid-container">
+        <div class="rule-card">
+            <img src="{{ url_for('static', filename='images/choose_10.png')}}" alt="Картинка">
+        </div>
+        <div class="flex-item">
+            <p>Если вы не желаете продолжать игру - вы всегда можете вернуться на Главную</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

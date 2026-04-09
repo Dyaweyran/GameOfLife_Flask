@@ -1,0 +1,224 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body,
+h1,
+p,
+a {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.wrapper {
+    display: grid;
+    background-color: #F8FAFC;
+    min-height: 100vh;
+    min-width: 100vh;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.grid-container {
+    border: 2px solid white;
+    display: grid;
+    background-color: white;
+    direction: rtl;
+    grid-template-columns: 300px 300px;
+    grid-template-rows: 1fr;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+}
+
+.grid-container:nth-child(even) {
+    direction: ltr;
+}
+
+.grid-container-2 {
+    border: 2px solid white;
+    display: grid;
+    background-color: white;
+    grid-template-columns: 300px 300px 300px;
+    grid-template-rows: 1fr;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    gap: 20px;
+}
+
+.flex-item {
+    border: 2px solid white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-grow: 1;
+}
+
+#text-list {
+    direction: rtl;
+    display: grid;
+}
+
+#text-list p,
+#text-list ul {
+    direction: ltr;
+    /* Возвращаем направление текста в нормальное русло */
+    text-align: left;
+    /* Либо justify, если нужно выровнять края */
+    unicode-bidi: embed;
+    /* Помогает корректно изолировать блоки внутри rtl */
+    padding: 0 0 0 20px;
+}
+
+#text-list ul {
+    list-style-position: inside;
+    /* Чтобы маркеры не улетели за границу из-за реверса */
+    padding: 0 0 0 20px;
+}
+
+.flex-item-img {
+    border: 2px solid white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.rule-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+    /* Больше воздуха! */
+    margin-bottom: 40px;
+    padding: 40px;
+    background: #fff;
+    border-radius: 24px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.rule-card:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.grid-container:hover {
+    border-color: #4c4cff;
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+}
+
+.grid-container-2:hover {
+    border-color: #4c4cff;
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+}
+
+.btn-container {
+    display: flex;
+    flex-direction: row;
+    background-color: #F8FAFC;
+    width: auto;
+    min-height: 10vh;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+
+}
+
+.btn-main {
+    display: flex;
+    border: 2px solid white;
+    margin: 7px;
+    background-color: gainsboro;
+    text-decoration: none;
+    color: white;
+    width: 180px;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    font-family: sans-serif;
+    transition: 0.3s;
+}
+
+.btn-main:hover {
+    background-color: #4F46E5;
+    cursor: pointer;
+}
+
+img {
+    max-width: 100%;
+    /* Картинка не станет шире родителя */
+    height: auto;
+    /* Пропорции сохранятся */
+    display: block;
+    /* Убирает лишние отступы снизу */
+}
+
+:root {
+    --bg-color: #f5f5f5;
+    /* Светло-серый фон */
+    --card-bg: #ffffff;
+    /* Белые карточки */
+    --accent-blue: #4c4cff;
+    /* Ваш синий из меню */
+    --text-main: #333;
+}
+
+.backend-love {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    font-family: sans-serif;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+.row:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.topic,
+.pain {
+    flex: 1;
+    /* Одинаковая ширина колонок */
+    padding: 30px;
+    border-radius: 20px;
+    background: var(--card-bg);
+    transition: all 0.3s ease;
+    border: 1px solid #eee;
+}
+
+.row:hover .topic {
+    background: var(--accent-blue);
+    color: white;
+    border-color: var(--accent-blue);
+}
+
+.topic h3 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.pain {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #666;
+    border: none;
+    background: transparent;
+    text-align: justify;
+}

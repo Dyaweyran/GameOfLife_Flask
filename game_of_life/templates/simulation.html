@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block style %}
+<script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+<link href="{{ url_for('static', filename='main.css') }}" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block content %}
+<div class="body-game">
+    <div class="btn-container-top">
+        <a href="{{ url_for('root') }}" class="btn-main-click">Главная</a>
+        <div class="btn-counter">{{ counter }}</div>
+        <a href="{{ url_for('simulation') }}" class="btn-main-click">Следующий цикл</a>
+    </div>
+    <div class="grid-container-middle">
+        <div id="grid-wrapper" class="grid-container-inside"
+            style="--rows: {{ grid_size | length }}; --cols: {{ grid_size[0] | length }}">
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts%}
+<script>
+    $(document).ready(function () {
+        function updateGrid() {
+            $.ajax({
+                url: '/api/get_grid',
+                method: 'GET',
+                success: function (response) {
+                    let grid = response.grid;
+                    let htmlContent = '';
+                    for (let i = 0; i < grid.length; i++) {
+                        for (let j = 0; j < grid[i].length; j++) {
+                            htmlContent += `<div class="grid-item" data-state="${grid[i][j]}"></div>`;
+                        }
+                    }
+                    $('#grid-wrapper').html(htmlContent);
+                    $('.btn-counter').text(response.counter);
+                }
+            });
+        }
+        updateGrid();
+        setInterval(updateGrid, 2000);
+    });
+</script>
+{% endblock %}
